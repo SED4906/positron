@@ -2,8 +2,8 @@
 #include <libc.h>   
 
 gdt_segment gdt[7];
-gdt_ptr gdtr = { .limit = sizeof(gdt) - 1,
-                           .base = (uint64_t)gdt };
+gdt_ptr gdtr = { .limit = sizeof(gdt_segment)*7 - 1,
+                 .base = (uint64_t)gdt };
 tss_seg tss;
 
 void set_gdt_entry(gdt_segment* seg, uint64_t base, uint16_t limit, uint8_t access, uint8_t flags) {
