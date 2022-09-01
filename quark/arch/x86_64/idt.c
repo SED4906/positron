@@ -1,7 +1,7 @@
 #include <common/idt.h>
 
 idt_gate idt[256];
-idt_ptr idtr = { .limit = sizeof(idt) - 1,
+idt_ptr idtr = { .limit = sizeof(idt_gate)*256 - 1,
                  .base = (uint64_t)idt };
 
 void set_idt_entry(uint8_t vector, void* isr, uint8_t flags) {
