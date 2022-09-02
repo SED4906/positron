@@ -2,8 +2,7 @@
 #include <libc.h>   
 
 gdt_segment gdt[7];
-gdt_ptr gdtr = { .limit = sizeof(gdt_segment)*7 - 1,
-                 .base = (uint64_t)gdt };
+gdt_ptr gdtr = {.base = 0, .limit = 0};
 tss_seg tss;
 
 void set_gdt_entry(gdt_segment* seg, uint64_t base, uint16_t limit, uint8_t access, uint8_t flags) {
@@ -26,6 +25,9 @@ void init_gdt() {
     set_gdt_entry(&gdt[4], 0, 0, 0xF2, 0xC);
     set_gdt_entry(&gdt[5], (uint64_t)&tss, sizeof(tss_seg), 0x89, 0x0);
     memset(&tss, 0, sizeof(tss_seg));
+
+    gdtr.base = (uint64_t)gdt;
+    gdtr.limit = sizeof(gdt_segment)*7 - 1;
 
     load_gdt(&gdtr);
     load_tss();

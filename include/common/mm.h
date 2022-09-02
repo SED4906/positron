@@ -18,3 +18,5 @@ void dealloc_page(size_t page);
 void init_mm();
 
 size_t get_pmap();
+
+extern uint64_t hhdm;

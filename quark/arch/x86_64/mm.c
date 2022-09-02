@@ -8,14 +8,14 @@ uint64_t hhdm;
 
 size_t alloc_page() {
     size_t ret = (size_t)free_pages;
-    free_pages = ((freelist*)((size_t)free_pages + hhdm))->next;
+    free_pages = ((freelist*)(ret + hhdm))->next;
     memset((void*)(ret+hhdm),0,4096);
     return ret;
 }
 
 void dealloc_page(size_t page) {
     freelist* entry = (freelist*)page;
-    ((freelist*)((size_t)entry + hhdm))->next = free_pages;
+    ((freelist*)(page + hhdm))->next = free_pages;
     free_pages = entry;
 }
 

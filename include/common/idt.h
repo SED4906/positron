@@ -22,4 +22,5 @@ extern void die();
 extern void idle();
 extern void pic_clear_mask(char irq);
 void init_idt();
-void load_idt(idt_ptr* idtr);
+extern void load_idt(idt_ptr* idtr);
+extern void enable_interrupts();

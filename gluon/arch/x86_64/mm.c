@@ -2,7 +2,7 @@
 
 heap* heaps;
 
-size_t find_run_of_zeros(char* bitmap, size_t bits, size_t bytes) {
+int find_run_of_zeros(char* bitmap, size_t bits, size_t bytes) {
     size_t run = 0;
     for(size_t bit=0;bit<bytes*8;bit++) {
         if(run >= bits) {
@@ -12,7 +12,7 @@ size_t find_run_of_zeros(char* bitmap, size_t bits, size_t bytes) {
         size_t mask = 1 << (bit & 7);
         if(bitmap[byte] & mask) run = 0; else run++;
     }
-    return 0;
+    return -1;
 }
 
 void set_some_bits(char* bitmap, size_t bits, size_t begin) {
@@ -33,12 +33,12 @@ void clear_run_of_ones(char* bitmap, size_t begin, size_t bytes) {
 
 void* alloc(size_t bytes) {
     if(bytes > 3582) return 0;
-    if(!heaps) heaps = (heap*)alloc_page();
+    if(!heaps) heaps = (heap*)(alloc_page()+hhdm);
     heap* current = heaps;
     while(current) {
         size_t pos = 0;
-        if(!(pos = find_run_of_zeros(current->bitmap,bytes+2,448))) {
-            if(!current->next) current->next = (heap*)alloc_page();
+        if((pos = find_run_of_zeros(current->bitmap,bytes+2,448)) < 0) {
+            if(!current->next) current->next = (heap*)(alloc_page()+hhdm);
             current = current->next;
         } else {
             set_some_bits(current->bitmap, bytes, pos+1);

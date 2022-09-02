@@ -9,5 +9,5 @@ void init_process() {
     processes->pid = 0;
     processes->t.active = 1;
     processes->t.next = &processes->t;
-    init_task();
+    init_task(&processes->t);
 }

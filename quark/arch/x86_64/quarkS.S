@@ -3,6 +3,10 @@
 global load_idt:function
 load_idt:
 lidt [rdi]
+ret
+
+global enable_interrupts:function
+enable_interrupts:
 sti
 ret
 

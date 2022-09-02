@@ -12,4 +12,4 @@ typedef struct task { context c;
                       struct task* next; }
                       task;
 
-void init_task();
+void init_task(task* first);
