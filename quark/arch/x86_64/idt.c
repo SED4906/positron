@@ -1,4 +1,4 @@
-#include <common/idt.h>
+#include <quark/idt.h>
 #include <common/mm.h>
 #include <libc.h>
 

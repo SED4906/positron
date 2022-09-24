@@ -1,4 +1,4 @@
-#include <common/gdt.h>
+#include <quark/gdt.h>
 #include <libc.h>   
 
 gdt_segment gdt[7];

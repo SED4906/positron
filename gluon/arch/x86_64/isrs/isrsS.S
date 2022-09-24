@@ -8,6 +8,20 @@ pop rax
 call task_switch
 iretq
 
+extern keyboard_handler
+global isr_irq1_keyb:function
+isr_irq1_keyb:
+push rdi
+push rax
+mov al, 0x20
+out 0x20, al
+in al, 0x60
+mov rdi, al
+pop rax
+call keyboard_handler
+pop rdi
+iretq
+
 extern incur_page_fault
 global isr_exc14_pf:function
 isr_exc14_pf:

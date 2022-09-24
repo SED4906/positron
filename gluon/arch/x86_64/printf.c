@@ -2,7 +2,7 @@
 #include <stdarg.h>
 #include <stdbool.h>
 #include <stddef.h>
-#include <common/fb.h>
+#include <gluon/fb.h>
 #include <libc.h>
 
 char hexmake(unsigned int v) {

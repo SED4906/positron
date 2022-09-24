@@ -1,11 +1,11 @@
 #include <common/limine.h>
-#include <common/fb.h>
+#include <gluon/fb.h>
 #include <fonts/9x14.h>
 #include <libc.h>
 const uint64_t side_offh = 90;
 const uint64_t side_offv = 70;
-uint64_t gfx_terminal_col = side_offh/9;
-uint64_t gfx_terminal_row = side_offv/14;
+uint64_t gfx_terminal_col = 10;
+uint64_t gfx_terminal_row = 5;
 
 struct limine_framebuffer_request framebuffer_request = {
     .id = LIMINE_FRAMEBUFFER_REQUEST,

@@ -16,8 +16,6 @@ typedef struct { uint16_t limit;
 __attribute__((packed)) idt_ptr;
 
 extern void set_idt_entry(uint8_t vector, void* isr, uint8_t flags);
-extern void isr_exc14_pf();
-extern void isr_irq0_pit();
 extern void die();
 extern void idle();
 extern void pic_clear_mask(char irq);

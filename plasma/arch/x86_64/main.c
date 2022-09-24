@@ -1,9 +1,9 @@
-#include <common/gdt.h>
-#include <common/idt.h>
-#include <common/isrs.h>
+#include <quark/gdt.h>
+#include <quark/idt.h>
+#include <gluon/isrs.h>
 #include <common/mm.h>
-#include <common/process.h>
-#include <common/task.h>
+#include <gluon/process.h>
+#include <quark/task.h>
 #include <libc.h>
 
 void _start() {

@@ -1,4 +1,4 @@
-#include <common/process.h>
+#include <gluon/process.h>
 #include <common/mm.h>
 
 process* processes;

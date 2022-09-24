@@ -1,5 +1,5 @@
 #include <common/mm.h>
-#include <common/idt.h>
+#include <quark/idt.h>
 #include <common/limine.h>
 #include <libc.h>
 

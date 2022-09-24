@@ -1,5 +1,5 @@
-#include <common/idt.h>
-#include <common/isrs.h>
+#include <quark/idt.h>
+#include <gluon/isrs.h>
 #include <libc.h>
 
 void incur_page_fault(size_t code, size_t address) {
