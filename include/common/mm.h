@@ -4,8 +4,10 @@
 
 typedef struct freelist { struct freelist* next; } freelist;
 
-typedef struct heap { char bitmap[448];
-                      struct heap* next; } heap;
+typedef struct heap {
+    char bitmap[448];
+    struct heap* next;
+} heap;
 
 void* alloc(size_t bytes);
 

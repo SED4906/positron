@@ -3,6 +3,8 @@
         "limine.h": "c",
         "stddef.h": "c",
         "idt.h": "c",
-        "task.h": "c"
+        "task.h": "c",
+        "process.h": "c",
+        "libc.h": "c"
     }
 }

@@ -16,9 +16,17 @@ push rax
 mov al, 0x20
 out 0x20, al
 in al, 0x60
-mov rdi, al
+mov rdi, rax
 pop rax
 call keyboard_handler
+pop rdi
+iretq
+
+extern gp_fault
+global isr_exc13_gp:function
+isr_exc13_gp:
+xchg rdi, [rsp]
+call gp_fault
 pop rdi
 iretq
 

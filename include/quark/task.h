@@ -1,15 +1,19 @@
 #pragma once
+#include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
 
-typedef struct { size_t rsp;
-                 size_t cr3; }
-                 context;
+typedef struct {
+    size_t rsp;
+    size_t cr3;
+} context;
 
-typedef struct task { context c; 
-                      size_t r[16];
-                      int active;
-                      struct task* next; }
-                      task;
+typedef struct task {
+    context c; 
+    size_t r[16];
+    bool last_active;
+    int pid,uid;
+    struct task *next, *prev;
+} task;
 
-void init_task(task* first);
+extern task *tasks;

@@ -202,6 +202,7 @@ extern context_switch
 extern save_register
 extern load_register
 
+extern check_switch_ring
 global task_switch:function
 task_switch:
 push rax
