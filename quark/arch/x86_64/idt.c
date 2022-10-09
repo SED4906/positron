@@ -1,5 +1,4 @@
 #include <quark/idt.h>
-#include <common/mm.h>
 #include <libc.h>
 
 idt_gate idt[256];

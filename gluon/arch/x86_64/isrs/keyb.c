@@ -53,9 +53,17 @@ char decode_scancode(uint8_t scancode) {
     return result;
 }
 
+char keyboard_buffer[128];
+uint8_t keyboard_write_pos=0;
+uint8_t keyboard_read_pos=0;
+
 void keyboard_handler(uint8_t scancode) {
     char c=0;
     if((c=decode_scancode(scancode))) {
         fb_print_string(&c,1);
+        if((keyboard_write_pos + 1) % 128 != keyboard_read_pos) {
+            keyboard_buffer[keyboard_write_pos++] = c;
+            if(keyboard_write_pos == 128) keyboard_write_pos = 0;
+        }
     }
 }

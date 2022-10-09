@@ -60,10 +60,9 @@ CPPFLAGS +=            \
 
 ARCH := arch/x86_64
 
-OBJ := plasma/$(ARCH)/main.o quark/libc.o
-OBJ += quark/$(ARCH)/gdt.o quark/$(ARCH)/idt.o quark/$(ARCH)/mm.o quark/$(ARCH)/quarkS.o quark/$(ARCH)/task.o
-OBJ += gluon/$(ARCH)/fb.o gluon/$(ARCH)/mm.o gluon/$(ARCH)/printf.o gluon/$(ARCH)/process.o
-OBJ += gluon/$(ARCH)/isrs/isrs.o gluon/$(ARCH)/isrs/isrsS.o gluon/$(ARCH)/isrs/page_fault.o gluon/$(ARCH)/isrs/keyb.o gluon/$(ARCH)/isrs/gp_fault.o
+include quark/Makefile
+include gluon/Makefile
+OBJ += plasma/$(ARCH)/main.o
 
 # Default target.
 .PHONY: all

@@ -5,6 +5,8 @@
         "idt.h": "c",
         "task.h": "c",
         "process.h": "c",
-        "libc.h": "c"
+        "libc.h": "c",
+        "mm.h": "c",
+        "isrs.h": "c"
     }
 }
