@@ -12,7 +12,7 @@ typedef struct task {
     context c; 
     size_t r[16];
     bool last_active;
-    int pid,uid;
+    int pid;
     //size_t text_s,text_e;
     size_t data_s,data_e;
     //size_t bss_s,bss_e;

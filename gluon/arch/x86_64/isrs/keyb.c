@@ -1,4 +1,5 @@
 #include <quark/idt.h>
+#include <quark/term.h>
 #include <gluon/fb.h>
 #include <gluon/isrs.h>
 #include <stdbool.h>
@@ -60,7 +61,7 @@ uint8_t keyboard_read_pos=0;
 void keyboard_handler(uint8_t scancode) {
     char c=0;
     if((c=decode_scancode(scancode))) {
-        fb_print_string(&c,1);
+        terminal_write(&c,1);
         if((keyboard_write_pos + 1) % 128 != keyboard_read_pos) {
             keyboard_buffer[keyboard_write_pos++] = c;
             if(keyboard_write_pos == 128) keyboard_write_pos = 0;

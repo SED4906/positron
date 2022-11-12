@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include <gluon/fb.h>
 #include <libc.h>
+#include <quark/term.h>
 
 char hexmake(unsigned int v) {
 	if(v>9) return v+55;
@@ -28,7 +29,7 @@ int printf(const char* format, ...) {
 				// TODO: Set errno to EOVERFLOW.
 				return -1;
 			}
-			if (!fb_print_string(format, amount)) {
+			if (!terminal_write(format, amount)) {
 				return -1;
 			}
 			format += amount;
@@ -45,7 +46,7 @@ int printf(const char* format, ...) {
 				// TODO: Set errno to EOVERFLOW.
 				return -1;
 			}
-			if (!fb_print_string(&c, sizeof(c))) {
+			if (!terminal_write(&c, sizeof(c))) {
 				return -1;
 			}
 			written++;
@@ -57,7 +58,7 @@ int printf(const char* format, ...) {
 				// TODO: Set errno to EOVERFLOW.
 				return -1;
 			}
-			if (!fb_print_string(str, len)) {
+			if (!terminal_write(str, len)) {
 				return -1;
 			}
 			written += len;
@@ -66,7 +67,7 @@ int printf(const char* format, ...) {
 			size_t xv = va_arg(parameters, size_t);
 			for(int i=sizeof(size_t) * 8 - 4;i>=0;i-=4) {
 				char dd=hexmake((xv >> i) & 0xF);
-				if(!fb_print_string(&dd,1)) {
+				if(!terminal_write(&dd,1)) {
 					return -1;
 				}
 				written++;
@@ -78,7 +79,7 @@ int printf(const char* format, ...) {
 			while(xv >> (i + 4) && i < (int)sizeof(size_t) * 8) i+=4;
 			for(;i>=0;i-=4) {
 				char dd=hexmake((xv >> i) & 0xF);
-				if(!fb_print_string(&dd,1)) {
+				if(!terminal_write(&dd,1)) {
 					return -1;
 				}
 				written++;
@@ -87,12 +88,12 @@ int printf(const char* format, ...) {
 			format++;
 			long long int dvs = va_arg(parameters, long long int);
 			char dm='-';
-			if(dvs < 0) {if(!fb_print_string(&dm,1)) return -1; written++;}
+			if(dvs < 0) {if(!terminal_write(&dm,1)) return -1; written++;}
 			unsigned long long int dv = (unsigned long long int)(dvs >= 0 ? dvs : -dvs);
 			bool first=true;
 			if(dv == 0) {
 				char dd='0';
-				if(!fb_print_string(&dd,1)) return -1;
+				if(!terminal_write(&dd,1)) return -1;
 				written++;
 			} else {
 				size_t mul = 10;
@@ -104,7 +105,7 @@ int printf(const char* format, ...) {
 					char dd='0'+((dv/mul)%10);
 					mul /= 10;
 					if((first && dd != '0') || (!first)) {
-						if(!fb_print_string(&dd,1)) return -1;
+						if(!terminal_write(&dd,1)) return -1;
 						written++;
 					}
 					if(first) first = false;
@@ -117,7 +118,7 @@ int printf(const char* format, ...) {
 				// TODO: Set errno to EOVERFLOW.
 				return -1;
 			}
-			if (!fb_print_string(format, len)) {
+			if (!terminal_write(format, len)) {
 				return -1;
 			}
 			written += len;

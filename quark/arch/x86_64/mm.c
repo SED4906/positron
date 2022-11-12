@@ -49,7 +49,6 @@ void init_mm() {
 
     // Unmaps identity mapping, should reveal bugs.
     size_t* pmap = (size_t*)get_pmap();
-    pmap[0] = 0;
     cr3 = (size_t)pmap;
 }
 

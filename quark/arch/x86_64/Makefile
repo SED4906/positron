@@ -1,1 +1,1 @@
-OBJ += quark/$(ARCH)/gdt.o quark/$(ARCH)/idt.o quark/$(ARCH)/mm.o quark/$(ARCH)/quarkS.o quark/$(ARCH)/task.o
+OBJ += quark/$(ARCH)/gdt.o quark/$(ARCH)/idt.o quark/$(ARCH)/mm.o quark/$(ARCH)/quarkS.o quark/$(ARCH)/task.o quark/$(ARCH)/term.o

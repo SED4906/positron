@@ -8,7 +8,7 @@ void set_idt_entry(uint8_t vector, void* isr, uint8_t flags) {
     idt_gate* gate = &idt[vector];
 
     gate->isr_low = (uint64_t)isr & 0xFFFF;
-    gate->kernel_cs = 0x08;
+    gate->kernel_cs = 0x28;
     gate->ist = 0;
     gate->attributes = flags;
     gate->isr_mid = ((uint64_t)isr >> 16) & 0xFFFF;
