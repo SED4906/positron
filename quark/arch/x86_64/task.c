@@ -11,7 +11,6 @@ void init_task() {
     tasks->next = tasks;
     tasks->prev = tasks;
     tasks->pid = next_pid++;
-    tasks->uid = 0;
     tasks->last_active = true;
     tasks->data_s = 0;
     tasks->data_e = 0;
