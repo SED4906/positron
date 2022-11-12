@@ -35,7 +35,7 @@ RET
 
 global load_tss:function
 load_tss:
-mov rax,tss wrt ..sym
+mov rax,tss
 mov [rax + 4],rsp
 mov ax,0x48
 ltr ax
@@ -147,54 +147,54 @@ iretq
 
 global isr_stub_table:data
 isr_stub_table:
-dq isr_no_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_err_stub wrt ..sym
-dq isr_err_stub wrt ..sym
-dq isr_err_stub wrt ..sym
-dq isr_err_stub wrt ..sym
-dq isr_err_stub wrt ..sym 
-dq isr_no_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_err_stub wrt ..sym
-dq isr_no_err_stub wrt ..sym
-dq isr_irqm_stub wrt ..sym
-dq isr_irqm_stub wrt ..sym
-dq isr_irqm_stub wrt ..sym
-dq isr_irqm_stub wrt ..sym
-dq isr_irqm_stub wrt ..sym
-dq isr_irqm_stub wrt ..sym
-dq isr_irqm_stub wrt ..sym
-dq isr_irqm_stub wrt ..sym
-dq isr_irqs_stub wrt ..sym
-dq isr_irqs_stub wrt ..sym
-dq isr_irqs_stub wrt ..sym
-dq isr_irqs_stub wrt ..sym
-dq isr_irqs_stub wrt ..sym
-dq isr_irqs_stub wrt ..sym
-dq isr_irqs_stub wrt ..sym
-dq isr_irqs_stub wrt ..sym
+dq isr_no_err_stub
+dq isr_no_err_stub
+dq isr_no_err_stub
+dq isr_no_err_stub
+dq isr_no_err_stub
+dq isr_no_err_stub
+dq isr_no_err_stub
+dq isr_no_err_stub
+dq isr_err_stub
+dq isr_no_err_stub
+dq isr_err_stub
+dq isr_err_stub
+dq isr_err_stub
+dq isr_err_stub
+dq isr_err_stub 
+dq isr_no_err_stub
+dq isr_no_err_stub
+dq isr_err_stub
+dq isr_no_err_stub
+dq isr_no_err_stub
+dq isr_no_err_stub
+dq isr_no_err_stub
+dq isr_no_err_stub
+dq isr_no_err_stub
+dq isr_no_err_stub
+dq isr_no_err_stub
+dq isr_no_err_stub
+dq isr_no_err_stub
+dq isr_no_err_stub
+dq isr_no_err_stub
+dq isr_err_stub
+dq isr_no_err_stub
+dq isr_irqm_stub
+dq isr_irqm_stub
+dq isr_irqm_stub
+dq isr_irqm_stub
+dq isr_irqm_stub
+dq isr_irqm_stub
+dq isr_irqm_stub
+dq isr_irqm_stub
+dq isr_irqs_stub
+dq isr_irqs_stub
+dq isr_irqs_stub
+dq isr_irqs_stub
+dq isr_irqs_stub
+dq isr_irqs_stub
+dq isr_irqs_stub
+dq isr_irqs_stub
 
 ; TASK
 
