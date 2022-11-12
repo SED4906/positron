@@ -39,7 +39,7 @@ void flush(file_handle* handle) {
 }
 
 file_handle* open(void* data) {
-    file_handle* handle = alloc(sizeof(file_handle))
+    file_handle* handle = alloc(sizeof(file_handle));
     handle->space = cr3;
     handle->data = data;
     handle->pos = 0;
