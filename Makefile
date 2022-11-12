@@ -16,8 +16,8 @@ LD := ld.lld
 AS := nasm
 
 # User controllable CFLAGS.
-CFLAGS ?= -Wall -Wextra -O0 -pipe -Iinclude
-CPPFLAGS ?= -Wall -Wextra -O0 -pipe -Iinclude
+CFLAGS ?= -Wall -Wextra -Os -pipe -Iinclude
+CPPFLAGS ?= -Wall -Wextra -Os -pipe -Iinclude
 
 # User controllable linker flags. We set none by default.
 LDFLAGS ?= 	-Tplasma/$(ARCH)/linker.ld \
