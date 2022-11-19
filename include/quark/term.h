@@ -1,4 +1,4 @@
 #pragma once
 #include <stddef.h>
 
-size_t terminal_write(char* str, size_t len);
+size_t terminal_write(const char* str, size_t len);

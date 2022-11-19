@@ -12,14 +12,11 @@ void init_task() {
     tasks->prev = tasks;
     tasks->pid = next_pid++;
     tasks->last_active = true;
-    tasks->data_s = 0;
-    tasks->data_e = 0;
 }
 
 void exit_task() {
     __asm__ volatile("cli");
     task* task_exiting = tasks;
-    deallocate_data_segment(task_exiting);
     // Remove task from list.
     tasks->next->prev = tasks->prev;
     tasks->prev->next = tasks->next;
@@ -51,15 +48,4 @@ void save_register(size_t d, int w) {
 
 size_t load_register(int w) {
     return tasks->r[w];
-}
-
-bool within_data(size_t address) {
-    return address >= tasks->data_s && address < tasks->data_e;
-}
-
-void deallocate_data_segment(task* task) {
-    for(size_t address = task->data_s; address < task->data_e; address += 4096) {
-        size_t paddr = get_virtual_mapping(task->c.cr3, address);
-        if(paddr & 1) dealloc_page(paddr &~ 0xFFF);
-    }
 }

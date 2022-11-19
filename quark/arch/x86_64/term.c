@@ -6,7 +6,7 @@ struct limine_terminal_request terminal_req = {
     .revision = 0, .response = 0
 };
 
-size_t terminal_write(char* str, size_t len) {
+size_t terminal_write(const char* str, size_t len) {
     if(!terminal_req.response) return 0;
     terminal_req.response->write(terminal_req.response->terminals[0], str, len);
     return len;
